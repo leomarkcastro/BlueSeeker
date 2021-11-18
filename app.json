@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "BlueSeeker",
+    "slug": "BlueSeeker",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/image-app-icon.png",
+    "splash": {
+      "image": "./src/assets/images/image-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.vaguvix.blueseeker",
+      "userInterfaceStyle": "light"
+    },
+    "web": {
+      "favicon": "./src/assets/images/image-app-icon.png"
+    }
+  }
+}
