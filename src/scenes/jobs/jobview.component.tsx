@@ -102,9 +102,9 @@ export const JobViewScreen = (props): React.ReactElement => {
               <Text category="h6" status="primary" style={styles.t3style}>
                 Payment
               </Text>
-              <Text> * P{jobData.payment.rate} / hour</Text>
+              <Text> * {jobData.payment.rate ? `P${jobData.payment.rate}` : "P0"} / hour</Text>
               {
-                jobData.payment.extra.map((e,i) => <Text key={`pay_extra${i}`}> * {e}</Text>)
+                jobData.payment.extra && jobData.payment.extra.map((e,i) => <Text key={`pay_extra${i}`}> * {e}</Text>)
               }
 
               <Divider style={styles.tstyle} />

@@ -59,7 +59,7 @@ export const ProposalsScreen = (props): React.ReactElement => {
       //header={() => renderItemHeader(info)}
       onPress={() => onItemPress(info.item)}
       status='primary'>
-      <Text category='h5'>
+      <Text category='h5' style={styles.header}>
         {info.item.title}
       </Text>
       <Text
@@ -120,8 +120,9 @@ export const ProposalsScreen = (props): React.ReactElement => {
 const _styles = StyleService.create({
   listSection: {
     padding: 8,
-    color: 'color-primary-default',
-    marginBottom:16,
+    backgroundColor: 'color-primary-default',
+    color: 'white',
+    marginBottom:8,
   },
   title: {
     padding: 8
@@ -163,4 +164,8 @@ const _styles = StyleService.create({
     alignItems: 'flex-end',
     marginHorizontal: 16,
   },
+  header:{
+    color: 'color-primary-default',
+
+  }
 });

@@ -139,6 +139,22 @@ export async function applyJobListing(userId, jobData){
   }
 }
 
+export async function listenJobListings(qe, callback){
+    const q = query(collection(db, "jobs"), where("type", "==", qe));
+    const unsub = onSnapshot(q, 
+        callback
+        //(querySnapshot) => {
+        //    const cities = [];
+        //    querySnapshot.forEach((doc) => {
+        //        cities.push(doc.data().message);
+        //    });
+        //    console.log("Current cities in CA: ", cities.join(", "));
+        //}
+    );
+
+    return unsub
+}
+
 export async function getJobListings(qe){
   let querySnapshot
   if(query){

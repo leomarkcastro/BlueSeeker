@@ -7,7 +7,7 @@ import { MenuIcon } from '../../components/icons';
 import { Article } from './data';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getJobListings } from "../../service/firebase/firebase_init.js"
+import { getJobListings, listenJobListings } from "../../service/firebase/firebase_init.js"
 
 export const JobsScreen = (props): React.ReactElement => {
 
@@ -19,13 +19,19 @@ export const JobsScreen = (props): React.ReactElement => {
   async function loadJobs(){
     try{
       let rawData = await getJobListings(acctData ? acctData.work_profile[0].title : false)
-      let jobLists = []
-      rawData.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        jobLists.push({id: doc.id, ...doc.data()});
-      });
-      //console.log(jobLists)
-      setData(jobLists)
+      
+      
+      await listenJobListings(acctData ? acctData.work_profile[0].title : false, 
+        (querySnapshot) => {
+          let jobLists = []
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            jobLists.push({id: doc.id, ...doc.data()});
+          });
+          //console.log(jobLists)
+          setData(jobLists);
+        }
+      )
     }
     catch(e){
       console.log(e)
@@ -114,17 +120,19 @@ export const JobsScreen = (props): React.ReactElement => {
       />
       <Divider/>
 
+      
       <Input
         placeholder='Search'
         value={value}
         onChangeText={nextValue => setValue(nextValue)}
         style={styles.search}
       />
+      
 
       <List
         style={styles.list}
         contentContainerStyle={styles.listContent}
-        data={data}
+        data={data.filter(e => { return e.title.indexOf(value) > -1 })}
         renderItem={renderItem}
       />
       

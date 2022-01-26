@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { AppearanceProvider } from 'react-native-appearance';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';

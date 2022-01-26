@@ -7,6 +7,12 @@
               "center": {
                 "default": true
               },
+              "borderBottomColor": {
+                "default": "color-primary-default"
+              },
+              "borderBottomWidth": {
+                "default": 8
+              },
               "start": {
                 "default": false
               }
